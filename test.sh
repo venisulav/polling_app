@@ -1,0 +1,1 @@
+pytest -v --cov=polling_app --cov-report=html

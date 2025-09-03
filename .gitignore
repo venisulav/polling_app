@@ -1,0 +1,8 @@
+*.db
+htmlcov/
+__pycache__/
+.pytest_cache/
+.venv/
+poetry.lock
+.DS_Store
+.vscode/

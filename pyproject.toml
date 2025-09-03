@@ -1,0 +1,30 @@
+[project]
+name = "polling-app"
+version = "0.1.0"
+description = "Websocket playground"
+authors = [
+    {name = "Sulav Timilsina"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi (>=0.116.1,<0.117.0)",
+    "uvicorn (>=0.35.0,<0.36.0)",
+    "sqlalchemy (>=2.0.43,<3.0.0)",
+    "pydantic (>=2.11.7,<3.0.0)",
+    "websockets (>=15.0.1,<16.0.0)",
+    "pytest (>=8.4.1,<9.0.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+    "requests (>=2.32.5,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+isort = "^6.0.1"
+flake8 = "^7.3.0"
+pytest-cov = "^6.2.1"
