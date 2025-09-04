@@ -4,10 +4,13 @@ Polling App is a FastApi web application that allows users to create and vote on
 
 ## Features
 
-- Create a poll with multiple choices
-- Vote on a poll
-- Live updates to the users about the current state of the poll
-- Database integration
+- Create a poll with multiple choices.
+- List all polls.
+- Retrieve a poll by its id.
+- Vote on a poll. In the current model, user can vote only once.
+- Subscription to live updates of the poll using websocket api.
+- Database integration(sqlite for now)
+- Api level tests
 
 ## Installation
 
