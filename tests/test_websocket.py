@@ -78,9 +78,10 @@ class TestWebSocket(TestBase):
     def test_live_updates_two_users(self):
         poll_id = self.poll["id"]
         choice_id = self.poll["choices"][0]["id"]
-        with self.client.websocket_connect(
-            "/polls/ws"
-        ) as ws1, self.client.websocket_connect("/polls/ws") as ws2:
+        with (
+            self.client.websocket_connect("/polls/ws") as ws1,
+            self.client.websocket_connect("/polls/ws") as ws2,
+        ):
             assertion_helper.assert_successful_connect(ws1.receive_text())
             assertion_helper.assert_successful_connect(ws2.receive_text())
             ws1.send_text(json.dumps({"action": "subscribe", "poll_id": poll_id}))

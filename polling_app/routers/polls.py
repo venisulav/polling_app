@@ -23,6 +23,7 @@ def get_db():
         db.close()
 
 
+# In-memory mapping of poll_id to list of WebSocket connections
 connections: dict[str, List[WebSocket]] = {}
 
 
@@ -197,9 +198,10 @@ async def websocket_subscribe_multi_poll(ws: WebSocket, db: Session = Depends(ge
 
 
 @router.websocket("/ws/{poll_id}")
-async def websocket_endpoint_one_poll(
+async def websocket_subscribe_one_poll(
     ws: WebSocket, poll_id: str, db: Session = Depends(get_db)
 ):
+    """WebSocket endpoint to subscribe to a single poll's live updates."""
     await ws.accept()
     await send_success(ws, C.ACTION_CONNECT, {"message": "connected"})
     if not poll_exists(poll_id):
