@@ -2,12 +2,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .database import Base, engine
-from .routers import polls
+from .routers import admin, polls, voting, websockets
 
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Polling App")
+
+# Include all routers
 app.include_router(polls.router)
+app.include_router(voting.router)
+app.include_router(websockets.router)
+app.include_router(admin.router)
 
 origins = [
     "http://localhost:3000",  # React default dev server
